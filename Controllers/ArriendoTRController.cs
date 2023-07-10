@@ -52,8 +52,8 @@ namespace TursimoReal.Controllers
             }
             else
             {
-                // La conversión falló, maneja el escenario de error según sea necesario
-                // Por ejemplo, puedes asignar un valor predeterminado o mostrar un mensaje de error al usuario
+                // La conversión falló, manejar el escenario de error según sea necesario
+                // Asignar un valor predeterminado o mostrar un mensaje de error al usuario
                 arriendoData.Id_srv_ar = 0; // Valor predeterminado
             }
 
@@ -112,6 +112,7 @@ namespace TursimoReal.Controllers
             return View();
         }
 
+        #region CodigoComentado
         //public ActionResult RealizarReserva(int idDepto)
         //{
 
@@ -257,7 +258,8 @@ namespace TursimoReal.Controllers
 
         //    // Si hay errores de validación, volver a mostrar el formulario con los errores
         //    return View(arriendo);
-        //}
+        //} 
+        #endregion
 
         public ActionResult ReservaExitosa()
         {
