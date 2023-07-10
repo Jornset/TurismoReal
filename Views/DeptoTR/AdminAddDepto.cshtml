@@ -1,0 +1,229 @@
+﻿
+@model  TursimoReal.Models.Departamentos
+
+@{
+    ViewBag.Title = "Agregar Departmaneto";
+    List<SelectListItem> listaRegiones = ViewBag.listaRegiones as List<SelectListItem>;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Departmanetos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        /*   .tab-bar {
+            position: fixed;
+            top: 50px;
+            right: 0;
+            width: 100px;
+            z-index: 999;
+        }
+
+        .tab-bar a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .tab-bar a.active {
+            color: #fff;
+            background-color: #007bff;
+        }*/
+
+        .container-principal {
+            float: left;
+            color: #7B7554;
+            width: calc(100% - 280px);
+        }
+
+        .body {
+        }
+
+        .row {
+            float: right;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+                display: block;
+                color: #757780;
+                background-position: 0% 0%;
+                /*background-color:#ffffff;*/
+            }
+
+            .form-group input[type="text"], .form-group textarea {
+                width: 280px;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+        form-grouo .error-message {
+            color: red;
+        }
+    </style>
+    @*Prueba*@
+    <style>
+
+    .two-column-form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.two-column-form .form-group {
+    width: 50%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+@*@media (max-width: 768px) {
+    .two-column-form .form-group {
+        width: 100%;
+    }*@
+    .form-group input:invalid {
+        border-color: red;
+    }
+
+        .form-group input:invalid + .invalid-feedback {
+            display: block;
+            color: red;
+        }
+}
+    </style>
+
+
+    @*Prueba*@
+</head>
+
+<head>
+    <title>Registro de Departamento</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("GuardarDepartamento", "DeptoTR", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre)
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre Departamento" })
+                        @Html.ValidationMessageFor(model => model.Nombre)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Direccion)
+                        @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", placeholder = "Dirección de Departamento" })
+                        @Html.ValidationMessageFor(model => model.Direccion)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Depto, "N° de Departamento")
+                        @Html.TextBoxFor(model => model.Numero_Depto, new { @class = "form-control", placeholder = "N° de Departamento" })
+                        @Html.ValidationMessageFor(model => model.Numero_Depto)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descripcion, "Descripción")
+                        @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", placeholder = "Descripción ej(baños, habitaciones, internet .etc)" })
+                        @Html.ValidationMessageFor(model => model.Descripcion)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Imagen, "Imagenes")
+                        <input type="file" name="ImagenFile" class="form-control" accept="image/jpeg, image/png" />
+                        @Html.ValidationMessageFor(model => model.Imagen)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Valor_Arriendo, "Valor de Arriendo")
+                        @Html.TextBoxFor(model => model.Valor_Arriendo, new { @class = "form-control", placeholder = "Valor de Arriendo por Día" })
+                        @Html.ValidationMessageFor(model => model.Valor_Arriendo)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Comentario)
+                        @Html.TextBoxFor(model => model.Comentario, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Comentario)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calificacion)
+                        @Html.DropDownListFor(model => model.Calificacion, new SelectList(Enumerable.Range(1, 5)), "-- Seleccione una calificación --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Calificacion)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Region)
+                        @Html.DropDownList("ddlRegion", ViewBag.listaRegiones as List<SelectListItem>, "Seleccione una región")
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Admin_Encargado, "Administrador Encargado")
+                        @Html.TextBoxFor(model => model.Admin_Encargado, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Admin_Encargado)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Disponibilidad)
+                        @Html.TextBoxFor(model => model.Disponibilidad, new { @class = "form-control", placeholder = "Disponibilidad ej: (S/O)" })
+                        @Html.ValidationMessageFor(model => model.Disponibilidad)
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                    @Html.ActionLink("Registrar Servicio", "RegistrarServicio", "ArriendoTR", null, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Vista de Arriendo", "IndexDepto", "DeptoTR", null, new { @class = "btn btn-primary" })
+                </div>
+                <div>
+                    <div class="col-md-6">
+                        @using (Html.BeginForm("EditarDepartamento", "DeptoTR", FormMethod.Get))
+                        {
+                            <div class="form-group">
+                                <input type="text" name="id" placeholder="Ingrese la ID para editar" class="form-control" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

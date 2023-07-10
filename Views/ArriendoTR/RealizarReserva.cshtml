@@ -1,0 +1,101 @@
+﻿
+
+@model TursimoReal.Models.Arriendo
+
+@{
+    ViewBag.Title = "Realizar Arriendo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SelectListItem> listaServicios = (List<SelectListItem>)ViewBag.listaServicios;
+   
+}
+
+<h2>Realizar Reserva</h2>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Departamento</th>
+                <th>Servicio</th>
+                <th>Valor Arriendo</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Término</th>
+                <th>Total Pago</th>
+                <th>Método de Pago</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+
+                    <span>@ViewBag.Departamento.Nombre</span>
+                </td>
+
+                <td>
+
+                    @Html.DropDownList("Datos", (IEnumerable<SelectListItem>)ViewBag.listaServicios, "Seleccione un servicio", new { @class = "form-control" })
+                </td>
+                <td>
+                    <span>@ViewBag.Departamento.Valor_Arriendo</span>
+                </td>
+                <td>@Model.Fecha_ini.ToShortDateString()</td>
+                <td>
+                    @Html.EditorFor(model => model.Fecha_termi, new { htmlAttributes = new { @class = "form-control", type = "date", min = Model.Fecha_ini.ToString("yyyy-MM-dd") } })
+                    @Html.ValidationMessageFor(model => model.Fecha_termi)
+                </td>
+                <td>
+                    Total
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Metodo_pago, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Metodo_pago)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                </td>
+                <td>
+                    @Html.ActionLink("+", "IndexDepto", "DeptoTR", new { idDepto = ViewBag.Departamento.Id_depto }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Costo</th>
+                <th>Cantidad Disponible</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Servicios != null)
+            {
+                foreach (var servicio in ViewBag.Servicios)
+                {
+                    <tr>
+                        <td>@servicio.Nombre_servicio</td>
+                        <td>@servicio.Descripcion</td>
+                        <td>@servicio.Costo_servicio</td>
+                        <td>@servicio.Count_disponibilidad</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <p>No se encontraron servicios.</p>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Realizar Reserva</button>
+
+</body>

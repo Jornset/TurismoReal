@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "EditarServicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TursimoReal.Models.Servicios
+
+
+
+<h2>Editar Servicio</h2>
+
+@using (Html.BeginForm("EditarServicio", "ArriendoTR", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_servicio, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Id_servicio, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Id_servicio, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre_servicio, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Nombre_servicio, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Nombre_servicio, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Disponible, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Disponible, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Disponible, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Count_disponibilidad, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Count_disponibilidad, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Count_disponibilidad, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Costo_servicio, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Costo_servicio, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Costo_servicio, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        @Html.ActionLink("Cancelar", "ListaServicios", null, new { @class = "btn btn-secondary" })
+    </div>
+}

@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar-custom {
+            background: linear-gradient(to top, #171616, #1d1c1c); 
+        }
+
+        .navbar-nav .dropdown-menu {
+            position: static;
+            float: none;
+        }
+
+            .navbar-nav .dropdown-menu > li {
+                text-align: center;
+            }
+
+                .navbar-nav .dropdown-menu > li > a {
+                    padding: 5px 15px;
+                    font-size: 14px;
+                }
+
+                    .navbar-nav .dropdown-menu > li > a:hover {
+                        background-color: #1d1c1c;
+                    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark navbar-custom">
+        <nav class="container">
+            <div class="col" style="margin-left:20px;">
+                @Html.ActionLink("Turismo Real", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                                {
+                                    var user = Session["Rol"] as TursimoReal.Models.Usuarios;
+                                    if (user != null)
+                                    {
+                                        var isAdmin = user.IdRol == TursimoReal.Models.Usuarios.Rol.Administrador;
+                                        var isFuncionario = user.IdRol == TursimoReal.Models.Usuarios.Rol.Funcionario;
+                                        var isCliente = user.IdRol == TursimoReal.Models.Usuarios.Rol.Cliente;
+
+                                        if (isAdmin)
+                                        {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Administrador", "AdminAddDepto", "DeptoTR", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
+                            else if (isFuncionario)
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Funcionario", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
+                            else if (isCliente)
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Mi Cuenta", "ClientPage", "Home", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("Mi Carrito", "ClientPage", "Home", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Registrar", "Registrar", "Reg_Usuario", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
+                        }
+                    }
+
+                    <li class="nav-item">
+
+                        @Html.ActionLink("Arrendar", "IndexDepto", "DeptoTR", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                </ul>
+
+            </div>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" style="margin-left: 350px;">
+                <ul class="navbar-nav ml-auto">
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li class="nav-item" style="margin-top: 10px; color:white;">
+                            @User.Identity.Name
+
+                        </li>
+
+
+                        <li style="margin-left: 20px; text-underline-offset">
+                            @Html.ActionLink("Cerrar sesion", "CerrarSesion", "LG_Usuarios", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+
+
+                    }
+                    else
+                    {
+                        <li class="nav-item" style=" margin-left: 175px; ">
+                            @Html.ActionLink("Iniciar sesion", "Login", "LG_Usuarios", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Registrar", "Registrar", "Reg_Usuario", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </nav>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            @*<p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>*@
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

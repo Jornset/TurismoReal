@@ -1,0 +1,95 @@
+﻿@using TursimoReal.Models;
+@using PagedList.Mvc
+@using PagedList;
+
+@model PagedList.IPagedList<TursimoReal.Models.Departamentos>
+
+
+@{
+    ViewBag.Title = "PaginaDepartamentos";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/MyStyles.css" />
+    <style>
+        .fixed-size-image {
+            width: 480px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product {
+            align-content: initial;
+        }
+
+        .product-details {
+            width: 280px;
+            height: 270px;
+        }
+    </style>
+    <style>
+        .availability-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .green-dot {
+            background-color: green;
+        }
+
+        .red-dot {
+            background-color: red;
+        }
+    </style>
+</head>
+<h2>Departamentos</h2>
+
+
+<div class="product-list">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="product col-sm img-thumbnail">
+                <div class="product-image d-flex flex-column">
+                    <img src="@Url.Action("ObtenerImagen", "DeptoTR", new { id = item.Id_depto })" alt="Descripción de la imagen" class="img-thumbnail rounded float-left fixed-size-image" />
+                </div>
+
+                <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
+
+                <div class="product-details">
+                    <p>Direccion: @Html.DisplayFor(modelItem => item.Direccion)</p>
+                    <p>Descripcion: @Html.DisplayFor(modelItem => item.Descripcion)</p>
+                    <p>Valor Arriendo: @Html.DisplayFor(modelItem => item.Valor_Arriendo)</p>
+                    <p>Calificación: @Html.DisplayFor(modelItem => item.Calificacion)</p>
+                    <p>Región: @Html.DisplayFor(modelItem => item.Region)</p>
+                    <p>
+                        Disponibilidad:
+                        <span class="availability-dot @(item.Disponibilidad == 'S' ? "green-dot" : "red-dot")"></span>
+                    </p>
+                </div>
+
+                <div class="actions">
+                    @Html.ActionLink("Arrendar", "RealizarReserva", "ArriendoTR", new { idDepto = item.Id_depto }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+
+        <div id="container" style="margin-left: 20px">
+            <p></p>
+            <p></p>
+            <div class="pagination" style="margin-left: 400px">
+                Page @(Model.PageCount < Model.PageNumber ? 1 : Model.PageNumber)
+                of @Model.PageCount
+
+            </div>
+            <div class="pagination" style="margin-left: 400px">
+                @Html.PagedListPager(Model, page => Url.Action("PaginaDepartamentos", new { page }))
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

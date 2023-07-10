@@ -1,0 +1,262 @@
+﻿<!-- Compiled and minified Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Minified JS library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #222;
+            color: #eee;
+        }
+
+        .navbar {
+            background-color: #333;
+        }
+
+        .carousel-caption {
+            height: 50%;
+            color: #eee;
+        }
+
+        .carousel-inner {
+            left: 0;
+            height: 50%;
+            width: 100%;
+            border: medium;
+        }
+
+        .carousel-img {
+            filter: blur(5px);
+            transition: filter 3s easy;
+            transform: skew(-20s);
+            overflow: hidden;
+        }
+
+        .card {
+            background-color: #444;
+            color: #eee;
+        }
+
+        hr {
+            border-color: darkgoldenrod;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .custom-col {
+            width: 25.00%;
+        }
+
+        .custom-word-spacing {
+            word-spacing: 0.15em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Carrusel de imágenes -->
+    <section>
+        <div id="myCarouselCustom" class="carousel slide" data-ride="carousel">
+
+
+            <!-- Wrapper for slides -->
+
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Content/Imagenes/depto1.png" alt="" style="border-radius: 3%">
+                    <div class="carousel-caption">
+                        <h3>First Slide</h3>
+                        <p>This is the first image slide</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/Content/Imagenes/depto2.png" alt="" style="border-radius: 3%">
+                    <div class="carousel-caption">
+                        <h3>Second Slide</h3>
+                        <p>This is the second image slide</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/Content/Imagenes/depto3.png" alt="" style="border-radius: 3%">
+                    <div class="carousel-caption">
+                        <h3>Third Slide</h3>
+                        <p>This is the third image slide</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarouselCustom" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarouselCustom" data-slide-to="1"></li>
+                <li data-target="#myCarouselCustom" data-slide-to="2"></li>
+            </ol>
+        </div>
+    </section>
+    <hr />
+    <!-- Sección "Quiénes somos" -->
+    <style>
+        .informacion-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .informacion {
+            float: right;
+            width: 300px;
+        }
+
+        .container-principal {
+            float: left;
+            width: calc(100% - 300px);
+        }
+
+        .row {
+            float: right;
+        }
+    </style>
+
+
+    <div class="container">
+
+        <div class="col-md-12">
+            <h2 style="font-family: 'Sitka Heading';"><b>Quiénes somos</b></h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="d-flex flex-column">
+                    <img src="~/Content/Imagenes/QSomos.png" alt="Descripción de la imagen" class="img-fluid" style="border-radius: 50%;">
+                </div>
+                <hr class="align-middle" />
+                <h3 class="text-center mt-3" style="height: 50px;">Apartamentos de calidad</h3>
+                <p class="text-center custom-word-spacing">
+                    TurismoReal ofrece 10 apartamentos de alta calidad en los destinos
+                    turísticos más populares del país, como Viña del Mar, La Serena, Pucón, Puerto Varas y más.
+                    Todos nuestros apartamentos han sido cuidadosamente elegidos y diseñados para ofrecer a nuestros
+                    huéspedes la mejor experiencia posible.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex flex-column">
+                    <img src="~/Content/Imagenes/QSomos1.png" alt="Descripción de la imagen" class="img-fluid" style="border-radius: 50%;">
+                </div>
+                <hr class="align-middle justify-content-sm-center" />
+                <h3 class="text-center mt-3 " style="height: 50px; ">Ubicaciones inmejorables</h3>
+                <p class="text-center custom-word-spacing">
+                    Todos nuestros apartamentos están ubicados en zonas de alto interés
+                    turístico, como cerca de la playa, zonas comerciales o lugares de interés cultural. Nos esforzamos por ofrecer a
+                    nuestros huéspedes las mejores ubicaciones posibles para que disfruten de su estadía.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex flex-column">
+                    <img src="~/Content/Imagenes/QSomos2.png" alt="Descripción de la imagen" class="img-fluid" style="border-radius: 50%;">
+                </div>
+                <hr class="align-middle" />
+                <h3 class="text-center mt-3 " style="height: 50px; ">Excelente servicio</h3>
+                <p class="text-center custom-word-spacing ">
+                    En TurismoReal, nos enorgullecemos de brindar un excelente servicio al
+                    cliente a todos nuestros huéspedes. Siempre estamos disponibles para ayudarlos durante su estadía y agradecemos
+                    cualquier comentario para mejorar nuestro servicio.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <!-- Cuadros de información de la empresa -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Información 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Información 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Información 3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Información 4</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    @*Área de beneficios*@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/Content/Imagenes/Beneficios.png" alt="Descripción de la imagen" class="img-fluid" style="border-radius: 10%">
+            </div>
+            <div class="col-md-6">
+                <div class="row align-items-center">
+                    <div class="col-md-12 d-flex align-items-center">
+                        <h3 style="margin-top: 80px">Acceso exclusivo</h3>
+                    </div>
+
+                    <p style="margin-bottom: 200px; ">Los usuarios registrados tienen acceso exclusivo a los mejores apartamentos en los destinos turísticos más populares del país.</p>
+
+                    <div class="col-md-12 d-flex align-items-center">
+                        <h3>Servicio personalizado</h3>
+                    </div>
+
+                    <p style="margin-bottom: 200px;">Los usuarios registrados reciben asistencia personalizada de nuestro personal durante su estancia.</p>
+
+                    <div class="col-md-12 d-flex align-items-center">
+                        <h3>Ofertas especiales</h3>
+
+                    </div>
+
+                    <p style="margin-bottom: 200px;">Los usuarios registrados reciben ofertas especiales y descuentos en sus reservas.</p>
+
+                    <div class="col-md-12 d-flex align-items-center">
+                        <h3>Reservas fáciles</h3>
+
+                    </div>
+
+                    <p style="margin-bottom: 20px;">Los usuarios registrados pueden realizar reservas de forma rápida y sencilla online oa través de nuestros canales de atención al cliente.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+    @*Apartado de contactos*@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Contacto</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus consectetur vestibulum. Sed ultrices mi eget ligula malesuada, a tempor tortor bibendum.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
