@@ -129,7 +129,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nombre)
-                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre Departamento" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre Departamento"})
                         @Html.ValidationMessageFor(model => model.Nombre)
                     </div>
 
@@ -202,22 +202,22 @@
                     @Html.ActionLink("Registrar Servicio", "RegistrarServicio", "ArriendoTR", null, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Vista de Arriendo", "IndexDepto", "DeptoTR", null, new { @class = "btn btn-primary" })
                 </div>
-                <div>
-                    <div class="col-md-6">
-                        @using (Html.BeginForm("EditarDepartamento", "DeptoTR", FormMethod.Get))
-                        {
-                            <div class="form-group">
-                                <input type="text" name="id" placeholder="Ingrese la ID para editar" class="form-control" />
-                            </div>
-                            <button type="submit" class="btn btn-primary">Editar</button>
-                        }
-                    </div>
-                </div>
+
+                
             </div>
         }
-    </div>
-
-
+            <div>
+                <div class="col-md-6">                          
+                    @using (Html.BeginForm("ActualizarDepartamento", "DeptoTR", FormMethod.Get))
+                    {
+                        <div class="form-group">
+                            <input type="text" name="id" placeholder="Ingrese la ID para editar" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    }
+                </div>
+            </div>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

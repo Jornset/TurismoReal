@@ -14,6 +14,7 @@ using System.Drawing;
 
 namespace TursimoReal.Controllers
 {
+
     public class DeptoTRController : Controller
     {
 
@@ -56,18 +57,21 @@ namespace TursimoReal.Controllers
             return View(departamentos);
         }
 
+
         #region AccesoAdmin
         [PermisosRolAtribute(Usuarios.Rol.Administrador)]
-        public ActionResult EditarDepartamento(int id)
+        public ActionResult ActualizarDepartamento(int id)
         {
             Departamentos departamentoService = new Departamentos();
             Departamentos departamento = departamentoService.ObtenerDepartamentoPorId(id);
             return View(departamento);
         }
 
+        [HttpPost]
         [PermisosRolAtribute(Usuarios.Rol.Administrador)]
         public ActionResult ActualizarDepartamento(Departamentos departamento, HttpPostedFileBase ImagenFile)
         {
+            Departamentos departamentos = departamento.ObtenerDepartamentoPorId(departamento.Id_depto);
 
             if (ModelState.IsValid)
             {
@@ -92,7 +96,7 @@ namespace TursimoReal.Controllers
                 }
                 Departamentos departamentoService = new Departamentos();
                 departamentoService.ModificarDepartamento(departamento);
-               // return RedirectToAction("About", "Home");
+                //return RedirectToAction("About", "Home");
             }
             return View(departamento);
         }
@@ -171,7 +175,6 @@ namespace TursimoReal.Controllers
                     }
 
                 }
-                Regiones reg = new Regiones();
 
                 var nuevoDepartamento = new Departamentos()
                 {
@@ -185,16 +188,13 @@ namespace TursimoReal.Controllers
                     Calificacion = departamento.Calificacion,
                     Region = valorSeleccionadoInt,
                     Admin_Encargado = departamento.Admin_Encargado,
-                    Disponibilidad = departamento.Disponibilidad,
+                    Disponibilidad = departamento.Disponibilidad
                 };
-
-
-
 
                 departamentoService.GuardarDepartamento(nuevoDepartamento);
                 nuevoDepartamento.ListarDepartamentos = departamentoService.ObtenerTodosLosDepartamentos();
 
-                    return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/Index.cshtml");
             }
             return View(departamento);
             

@@ -388,7 +388,7 @@ namespace TursimoReal.Models
                 connection.Open();
 
 
-                using (OracleCommand command = new OracleCommand("SELECT Region FROM REGION", connection))
+                using (OracleCommand command = new OracleCommand("SELECT Id_region,region FROM REGION", connection))
                 {
                     using (OracleDataReader reader = command.ExecuteReader())
                     {
