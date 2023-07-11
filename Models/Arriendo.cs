@@ -75,6 +75,7 @@ namespace TursimoReal.Models
     //        return OracleBD.GetConnection();
     //    }
     //}
+    //clase acompañante
 
     public class Acompañante
     {
