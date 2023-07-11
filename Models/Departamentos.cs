@@ -29,7 +29,7 @@ namespace TursimoReal.Models
         public int Calificacion { get; set; }
         public int Region { get; set; }
         public int Admin_Encargado { get; set; }
-        public char Disponibilidad { get; set; }
+        public char Disponibilidad { get; set; } 
 
         public List<Departamentos> ListarDepartamentos { get; set; }
 
@@ -388,7 +388,7 @@ namespace TursimoReal.Models
                 connection.Open();
 
 
-                using (OracleCommand command = new OracleCommand("SELECT Id_region FROM REGION", connection))
+                using (OracleCommand command = new OracleCommand("SELECT Region FROM REGION", connection))
                 {
                     using (OracleDataReader reader = command.ExecuteReader())
                     {

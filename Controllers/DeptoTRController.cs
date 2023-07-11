@@ -171,6 +171,7 @@ namespace TursimoReal.Controllers
                     }
 
                 }
+                Regiones reg = new Regiones();
 
                 var nuevoDepartamento = new Departamentos()
                 {
@@ -184,13 +185,16 @@ namespace TursimoReal.Controllers
                     Calificacion = departamento.Calificacion,
                     Region = valorSeleccionadoInt,
                     Admin_Encargado = departamento.Admin_Encargado,
-                    Disponibilidad = departamento.Disponibilidad
+                    Disponibilidad = departamento.Disponibilidad,
                 };
+
+
+
 
                 departamentoService.GuardarDepartamento(nuevoDepartamento);
                 nuevoDepartamento.ListarDepartamentos = departamentoService.ObtenerTodosLosDepartamentos();
 
-                return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/Home/Index.cshtml");
             }
             return View(departamento);
             

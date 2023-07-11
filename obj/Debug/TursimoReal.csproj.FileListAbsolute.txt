@@ -109,3 +109,6 @@ C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\es\System.Web.Http.WebHost.
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.csproj.CopyComplete
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.pdb
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\BouncyCastle.Crypto.dll
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\itextsharp.dll
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\itextsharp.xml
