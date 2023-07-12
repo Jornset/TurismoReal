@@ -1,5 +1,3 @@
-C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.csproj.AssemblyReference.cache
-C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.csproj.CoreCompileInputs.cache
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\TursimoReal.dll.config
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\TursimoReal.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\TursimoReal.pdb
@@ -35,8 +33,10 @@ C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\roslyn\vbc.rsp
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\roslyn\VBCSCompiler.exe
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Antlr3.Runtime.dll
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\BouncyCastle.Crypto.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\EntityFramework.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\EntityFramework.SqlServer.dll
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\itextsharp.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.Configuration.ConfigurationBuilders.Base.dll
@@ -49,6 +49,7 @@ C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Oracle.ManagedDataAccess.En
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Oracle.VsDevTools.EntityFramework.17.0.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\PagedList.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\PagedList.Mvc.dll
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Rotativa.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\System.Buffers.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\System.Memory.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\System.Net.Http.Formatting.dll
@@ -70,11 +71,11 @@ C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\System.Web.WebPages.Razor.d
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\WebGrease.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\EntityFramework.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\EntityFramework.SqlServer.xml
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\itextsharp.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.Configuration.ConfigurationBuilders.Base.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.xml
-C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\Newtonsoft.Json.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\PagedList.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\PagedList.Mvc.xml
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\System.Buffers.xml
@@ -106,9 +107,8 @@ C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\es\System.Web.WebPages.Razo
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\es\System.Web.Http.resources.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.csproj.AssemblyReference.cache
+C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.csproj.CoreCompileInputs.cache
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.csproj.CopyComplete
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.dll
 C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\obj\Debug\TursimoReal.pdb
-C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\BouncyCastle.Crypto.dll
-C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\itextsharp.dll
-C:\Users\axell\Desktop\ProyectoFinal\TursimoReal\bin\itextsharp.xml

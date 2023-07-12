@@ -14,6 +14,10 @@ using System.Reflection;
 using System.Drawing;
 using Microsoft.Ajax.Utilities;
 using System.Configuration;
+using iTextSharp.text.pdf.qrcode;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace TursimoReal.Controllers
 {
@@ -29,13 +33,13 @@ namespace TursimoReal.Controllers
         {
             return View();
         }
+
+        [HttpGet]
         public ActionResult RealizarReserva(int idDepto)
         {
 
-
             Usuarios userData = new Usuarios();
             Acompañante acompData = new Acompañante();
-
 
             Departamentos departamentoDisponible = deptoData.ObtenerDepartamentoPorId(idDepto);
             ViewBag.Departamento = departamentoDisponible;
@@ -85,7 +89,8 @@ namespace TursimoReal.Controllers
 
             ViewBag.Servicios = serviciosL;
 
- 
+            arriendoData.Estado_pago = "N";
+            
             // Obtener la disponibilidad del departamento
             char disponibilidad = arriendoDataAccess.ObtenerDisponibilidad(departamentoDisponible.Id_depto);
             if (disponibilidad == 'S')
@@ -105,13 +110,34 @@ namespace TursimoReal.Controllers
                 };
 
                 return View(arriendo);
+
             }
 
-
+            //var modeloJson = JsonSerializer.Serialize(arriendo);
+            //ViewBag.ModeloJson = modeljson;
 
             return View();
         }
 
+        [HttpPost]
+        public JsonResult RealizarReservaPost(string data)
+        {
+            Arriendo arriendo = new Arriendo();
+            var arriendo2 = JsonConvert.DeserializeObject<Object>(data);
+            arriendo = JsonConvert.DeserializeObject<Arriendo>(data);
+
+            //foreach (var propiedad in typeof(Arriendo).GetProperties())
+            //{
+            //    var valor = propiedad.GetValue(arriendo2);
+            //}
+
+           
+
+            arriendoDataAccess.RealizarArriendo(arriendo.Fecha_ini, arriendo.Fecha_termi, arriendo.Valor_dia, arriendo.Total_pago, arriendo.Metodo_pago,
+                arriendo.Estado_pago, (int)arriendo.Id_users, (int)arriendo.Id_deptos, (int)arriendo.Id_srv_ar, (int)arriendo.Id_acomp);
+
+            return Json("ReservaExitosa", "ArriendoTR");
+        }
         #region CodigoComentado
         //public ActionResult RealizarReserva(int idDepto)
         //{

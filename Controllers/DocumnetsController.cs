@@ -7,19 +7,25 @@ using TursimoReal.Models;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Rotativa;
 
 namespace TursimoReal.Controllers
 {
     public class DocumnetsController : Controller
     {
+
+
         // GET: Documnets
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult GenerarPDF()
+        public ActionResult GenerarPDF(int idArriendo)
         {
+            List<Arriendo> list = new List<Arriendo>();
+
+            Usuarios user = new Usuarios();
             Document doc = new Document();
             
             MemoryStream memoryStream = new MemoryStream();
@@ -29,14 +35,13 @@ namespace TursimoReal.Controllers
             doc.Open();
 
             //Encabazado
-            string NDocumento = "Numero de Documento: " /*Numero del documento*/;
+            string NDocumento = "Numero de Documento: " + idArriendo;
             Paragraph header = new Paragraph("Detalles de Arriendo" + "\n" + NDocumento);
 
             header.Alignment = Element.ALIGN_CENTER;
             doc.Add(header);
 
             //Informacio del Arriendo
-            
             string PrimeraParte = "En este documento se le entregara la informacion, de que el usuario: " + /*Dato Usuario*/ "\n" + /*Nombre - Apellido - Correo - Numero de contacto*/
                 " Realizo el arriendo del departamento: "+ /*Nombre Departamento*/ "" + " Ubicado en la region: " + /*Nombre Region*/ "\n" +
                 "Direccion: " +/*Direccion*/ "";
@@ -54,7 +59,18 @@ namespace TursimoReal.Controllers
 
             byte[] fileBytes = memoryStream.ToArray();
             memoryStream.Close();
-            return File(fileBytes, "application/pdf", "tabla.pdf");
+
+            //var list = reportes.ListarReportesPlanificacion(elementoId, tipoReporte);
+            //ListaElemGen = tipoElementoMan.ListarTelementoPaginado(1000, 1);
+            //string elemento = ListaElemGen.Where(x => x.ElementoId == elementoId).Select(x => x.Descripcion).FirstOrDefault();
+            //ViewData["Elemento"] = elemento;
+
+            var pdf = new ViewAsPdf("GenerarPDF", list);
+            pdf.PageSize = Rotativa.Options.Size.Letter;
+
+            return pdf;
+
+            //return File(fileBytes, "application/pdf", "tabla.pdf");
         }
     }
 }

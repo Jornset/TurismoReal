@@ -26,7 +26,7 @@ namespace TursimoReal.Models
         public DateTime Fecha_ini { get; set; }
 
         [Display(Name = "Fecha Término")]
-        public DateTime? Fecha_termi { get; set; }
+        public DateTime Fecha_termi { get; set; }
 
         [Display(Name = "Valor Día")]
         public int Valor_dia { get; set; }
@@ -54,7 +54,13 @@ namespace TursimoReal.Models
 
         public List<Arriendo> ListaArriendos { get; set; }
         public List<Departamentos> DepartamentosSeleccionados { get; set; }
+
+        public virtual Departamentos depto { get; set; }
+        public virtual Usuarios user { get; set; }
+        public virtual Servicios serv { get; set; }
+        public virtual Acompañante acomp { get; set; }
     }
+
 
     //public class ArriendoDataContext : DbContext
     //{
@@ -92,7 +98,7 @@ namespace TursimoReal.Models
     public class Servicios
     {
 
-        public int? Id_servicio { get; set; }
+        public int Id_servicio { get; set; }
         public string Nombre_servicio { get; set; }
         public string Descripcion { get; set; }
         public string Disponible { get; set; }
@@ -245,8 +251,6 @@ namespace TursimoReal.Models
             return servicios;
         }
 
-
-
     }
     #endregion
 
@@ -328,10 +332,12 @@ namespace TursimoReal.Models
 
             return disponibilidad;
         }
-        public void RealizarArriendo(DateTime fechaIni, DateTime fechaTermi,
+
+        public bool RealizarArriendo(DateTime fechaIni, DateTime fechaTermi,
                                      int valorDia, int totalPago, string metodoPago, string estadoPago,
                                      int idUsers, int idDeptos,int idServicios, int idAcompannante)
         {
+            bool boolistrue = false;
             using (OracleConnection connection = OracleBD.GetConnection())
             {
                 connection.Open();
@@ -349,8 +355,11 @@ namespace TursimoReal.Models
                     command.Parameters.Add("p_id_servicios", OracleDbType.Int32).Value = idServicios;
                     command.Parameters.Add("p_id_acompannante", OracleDbType.Int32).Value = idAcompannante;
                     command.ExecuteNonQuery();
+
+                    boolistrue = true;
                 }
             }
+            return boolistrue;
         }
 
 

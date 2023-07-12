@@ -6,7 +6,7 @@
     ViewBag.Title = "Realizar Arriendo";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<SelectListItem> listaServicios = (List<SelectListItem>)ViewBag.listaServicios;
-   
+
 }
 
 <h2>Realizar Reserva</h2>
@@ -16,86 +16,167 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
+    @using (Html.BeginForm("RealizarReserva", "ArriendoTR", FormMethod.Get, new { enctype = "multipart/form-data" }))
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Departamento</th>
+                    <th>Servicio</th>
+                    <th>Valor Arriendo</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Término</th>
+                    <th>Total Pago</th>
+                    <th>Método de Pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Departamento</th>
-                <th>Servicio</th>
-                <th>Valor Arriendo</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Término</th>
-                <th>Total Pago</th>
-                <th>Método de Pago</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
+                        <span>@ViewBag.Departamento.Nombre</span>
+                    </td>
 
-                    <span>@ViewBag.Departamento.Nombre</span>
-                </td>
+                    <td>
 
-                <td>
-
-                    @Html.DropDownList("Datos", (IEnumerable<SelectListItem>)ViewBag.listaServicios, "Seleccione un servicio", new { @class = "form-control" })
-                </td>
-                <td>
-                    <span>@ViewBag.Departamento.Valor_Arriendo</span>
-                </td>
-                <td>@Model.Fecha_ini.ToShortDateString()</td>
-                <td>
-                    @Html.EditorFor(model => model.Fecha_termi, new { htmlAttributes = new { @class = "form-control", type = "date", min = Model.Fecha_ini.ToString("yyyy-MM-dd") } })
-                    @Html.ValidationMessageFor(model => model.Fecha_termi)
-                </td>
-                <td>
-                    Total
-                </td>
-                <td>
-                    @Html.TextBoxFor(model => model.Metodo_pago, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Metodo_pago)
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                </td>
-                <td>
-                    @Html.ActionLink("+", "IndexDepto", "DeptoTR", new { idDepto = ViewBag.Departamento.Id_depto }, new { @class = "btn btn-success" })
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        @Html.DropDownList("Datos", (IEnumerable<SelectListItem>)ViewBag.listaServicios, "Seleccione un servicio", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <span>@ViewBag.Departamento.Valor_Arriendo</span>
+                    </td>
+                    <td>@Model.Fecha_ini.ToShortDateString()</td>
+                    <td>
+                        @Html.EditorFor(model => model.Fecha_termi, new { htmlAttributes = new { @class = "form-control", type = "date", min = Model.Fecha_ini.ToString("yyyy-MM-dd") } })
+                        @Html.ValidationMessageFor(model => model.Fecha_termi)
+                    </td>
+                    <td>
+                        Total
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Metodo_pago, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Metodo_pago)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                    <td>
+                        @Html.ActionLink("+", "IndexDepto", "DeptoTR", new { idDepto = ViewBag.Departamento.Id_depto }, new { @class = "btn btn-success" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Costo</th>
-                <th>Cantidad Disponible</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (ViewBag.Servicios != null)
-            {
-                foreach (var servicio in ViewBag.Servicios)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Costo</th>
+                    <th>Cantidad Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Servicios != null)
                 {
-                    <tr>
-                        <td>@servicio.Nombre_servicio</td>
-                        <td>@servicio.Descripcion</td>
-                        <td>@servicio.Costo_servicio</td>
-                        <td>@servicio.Count_disponibilidad</td>
-                    </tr>
+                    foreach (var servicio in ViewBag.Servicios)
+                    {
+                        <tr>
+                            <td>@servicio.Nombre_servicio</td>
+                            <td>@servicio.Descripcion</td>
+                            <td>@servicio.Costo_servicio</td>
+                            <td>@servicio.Count_disponibilidad</td>
+                        </tr>
+                    }
                 }
-            }
-            else
-            {
-                <p>No se encontraron servicios.</p>
-            }
-        </tbody>
-    </table>
+                else
+                {
+                    <p>No se encontraron servicios.</p>
+                }
+            </tbody>
+        </table>
+    }
 
-    <button type="submit" class="btn btn-primary">Realizar Reserva</button>
+    <button id="BtnGuardarArriendo" type="submit" class="btn btn-primary">Realizar Reserva</button>
 
+    @*@using (Html.BeginForm("RealizarReservaPost", "ArriendoTR", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+    }*@
+    @*<div class="col-md-2">
+            <a href="#" class="btn btn-danger" id="exportarPDF">
+                <span class="glyphicon glyphicon-save-file"></span> Exportar a PDF
+            </a>
+        </div>*@
 </body>
+
+@section scripts
+{
+    <script>
+
+        //$('#exportarPDF').attr('href', './Documnets?idArriendo');
+
+        //$('#exportarPDF').on('click', function (e) {
+
+        //    window.open(url);
+        //});
+
+        $(document).ready(function () {
+            $('#BtnGuardarArriendo').click(function () {
+                // Capturar los valores de la vista
+            var modelo = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+                console.log(modelo);
+
+                var arriendo =
+                    {
+                        "Id_registro": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Id_registro)),
+                        "Fecha_ini": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Fecha_ini)),
+                        "Fecha_termi": $('#Fecha_termi').val(),
+                        "Valor_dia": $('#Valor_Arriendo').val(),
+                        "Total_pago": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Total_pago)),
+                        "Metodo_pago": $('#Metodo_pago').val(),
+                        "Estado_pago": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Estado_pago)),
+                        "Id_users": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Id_users)),
+                        "Id_deptos": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Id_deptos)),
+                        "Id_srv_ar": $('#Datos').val(),
+                        "Id_acomp": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Id_acomp)),
+                        "ListaArriendos": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ListaArriendos)),
+                        "DepartamentosSeleccionados": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.DepartamentosSeleccionados)),
+                        "depto": @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.depto))
+                    }
+            // Capturar los otros valores desde la vista
+           /* var fechaTermino = $('#Fecha_termi').val();*/
+               /* var fechaFormateada1 = fechaTermino.getFullYear() + '/' + (dateValue.getMonth() + 1).toString().padStart(2, '0') + '/' + dateValue.getDate().toString().padStart(2, '0');*/
+/*            var metodoPago = $('#Metodo_pago').val();*/
+
+            // Crear el objeto con los datos a enviar al controlador
+            //var data = {
+            //    modelo: modelo,
+            //    fechaTermino: fechaTermino,
+            //    metodoPago: metodoPago
+            //};
+                var json = JSON.stringify(arriendo);
+                // Realizar la solicitud AJAX al controlador
+                $.ajax({
+                    url: '/ArriendoTR/RealizarReservaPost',  // Reemplaza 'NombreControlador' y 'NombreMetodo' con los nombres reales
+                    type: 'POST',
+                    data: JSON.stringify({ data: json }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    traditional: true,
+                    success: function (response) {
+                        // Manejar la respuesta del servidor
+                        alert('Reserva realizada con éxito');
+                        // Aquí puedes hacer cualquier otra acción después de realizar la reserva
+                    },
+                    error: function (xhr, status, error) {
+                        // Manejar los errores de la solicitud AJAX
+                        alert('Ocurrió un error al realizar la reserva');
+                    }
+                });
+            });
+        });
+
+    </script>
+}

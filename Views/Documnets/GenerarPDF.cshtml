@@ -1,0 +1,131 @@
+﻿@model List<TursimoReal.Models.Arriendo>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<style>
+    thead, tfoot {
+        display: table-row-group
+    }
+
+    .cabecera-img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        text-align: right;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+        .cabecera-img img {
+            max-height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+    .container-fluid {
+        margin-top: 120px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VistaPDFEventos</title>
+</head>
+<body>
+    <div class="cabecera-img">
+        <img src="~/images/logo3_sicas.png" />
+    </div>
+    <div class="container-fluid">
+        <div class="page-header text-center">
+            <h1>Reporte de eventos</h1>
+        </div>
+        <div>
+            @*<div class="col-md-6">
+                    <label>Ruta:</label>
+                    <p>@Model[0].Ruta</p>
+                </div>*@
+            @*<div class="col-md-6">
+                <label>Elemento:</label>
+                <p>@ViewData["Elemento"]</p>
+            </div>*@
+            <div class="col-md-6">
+                <label>Fecha y Hora del Reporte:</label>
+                <p>@DateTime.Now</p>
+            </div>
+        </div>
+        <div id="table-wrapper">
+            <table class="table table-bordered table-responsive-md">
+                <tbody start-y="80mm">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre Usuario</th>
+                        <th>Apellido Usuario</th>
+                        <th>Correo</th>
+                        <th>Nombre Departamento</th>
+                        <th>Region</th>
+                        <th>Direccion</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de termino</th>
+                        <th>Cantidad de Acompañante</th>
+                        <th>Servicio solicitado</th>
+                        <th>Numero Habitacion</th>
+                        <th>Dias de estadia</th>
+                        <th>Devolucion</th>
+                        <th>Creditos</th>
+                        <th>Valor de arriendo</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        //item.Codigo + '</td>';
+                        //(item.EsPlanificado ? 'Planificado' : 'No Planificado') + '</td>';
+                        //item.Descripcion + '</td>';
+                        //item.Observacion + '</td>';
+                        //FechaCreacion.toLocaleDateString() + '</td>';
+                        //FechaCco.toLocaleDateString() + '</td>';
+                        //fechaUnixCierre != null ? FechaCierre.toLocaleDateString() : 'No Cerrado' + '</td>';
+                        //item.TipoAlarma + '</td>';
+                        //item.Estado + '</td>';
+                        //item.Creador + '</td>';
+                        //item.Solicitante + '</td>';
+                        //item.Cierre + '</td>';
+
+                        <tr>
+                            <td>@item.Id_registro</td>
+                            <td>@item.user.Nombre</td>
+                            <td>@item.user.Apellido</td>
+                            <td>@item.user.Correo</td>
+                            <td>@item.depto.Region</td>
+                            <td>@item.depto.Direccion</td>
+                            <td>@item.Fecha_ini </td>
+                            <td>@item.Fecha_termi</td>
+                            <td>crear acompañantes</td>
+                            <td>@item.serv.Nombre_servicio</td>
+                            <td>@item.depto.Numero_Depto</td>
+                            <td>Generar Calculo</td>
+                            <td>@item.Fecha_termi</td>
+                            <td>@item.Metodo_pago</td>
+                            <td>@item.depto.Valor_Arriendo</td>
+                            <td>@item.Total_pago</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
